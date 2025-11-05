@@ -1,3 +1,4 @@
+/* Reset */
 * {
   margin: 0;
   padding: 0;
@@ -5,117 +6,200 @@
 }
 
 body {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   color: #fff;
-  background: radial-gradient(circle at center, #2b235a, #1a123b);
-  overflow: hidden; /* Prevent scrolling */
+  background: radial-gradient(circle at bottom, #1a093b, #0a011c);
+  overflow: hidden;
   height: 100vh;
+  width: 100vw;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
+  position: relative;
 }
 
-/* Background stars animation */
-.stars-bg {
+/* Star background canvas */
+#stars {
   position: fixed;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  background: url('https://www.transparenttextures.com/patterns/stardust.png');
-  animation: twinkle 5s infinite alternate;
   z-index: -1;
-  opacity: 0.4;
-}
-
-@keyframes twinkle {
-  from { opacity: 0.2; }
-  to { opacity: 0.5; }
 }
 
 /* Header */
 header {
-  position: absolute;
-  top: 20px;
-  left: 50%;
-  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1200px;
+  margin-top: 20px;
   display: flex;
+  justify-content: space-between;
   align-items: center;
-  gap: 40px;
 }
 
-header h2 {
-  color: #c19cf2;
+.logo {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: #fff;
+}
+.logo span {
+  color: #d08cff;
+  text-shadow: 0 0 10px #d08cff;
 }
 
 nav a {
   text-decoration: none;
   color: #d8c6ff;
-  margin: 0 10px;
-  font-weight: 500;
+  margin-left: 20px;
   transition: color 0.3s;
+  font-weight: 500;
 }
-
 nav a:hover {
   color: #fff;
 }
 
-/* Hero Section */
-.hero {
+/* Main content */
+.content {
   text-align: center;
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px;
 }
 
-.hero h1 {
-  font-size: 3rem;
+/* Intro section */
+.intro {
+  flex: 1 1 40%;
+  min-width: 300px;
+}
+
+.intro h1 {
+  font-size: 2.8rem;
   line-height: 1.2;
+  animation: glow 3s ease-in-out infinite alternate;
 }
 
-.hero span {
-  color: #d08cff;
+.intro span {
+  color: #b972ff;
 }
 
-.hero p {
-  margin-top: 10px;
-  color: #ddd;
+.intro p {
+  margin-top: 15px;
+  color: #ccc;
 }
 
 .btn {
   display: inline-block;
-  margin-top: 15px;
+  margin-top: 25px;
   padding: 10px 25px;
-  border-radius: 25px;
+  border-radius: 30px;
   background: linear-gradient(45deg, #9f63f9, #d08cff);
   color: #fff;
   text-decoration: none;
-  transition: transform 0.3s;
+  font-weight: 600;
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .btn:hover {
-  transform: scale(1.05);
+  transform: scale(1.08);
+  box-shadow: 0 0 20px #d08cff;
 }
 
-/* Info Section */
+/* Glowing effect */
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #9f63f9; }
+  100% { text-shadow: 0 0 20px #d08cff; }
+}
+
+/* Info cards */
 .info {
   display: flex;
-  justify-content: center;
-  gap: 40px;
-  margin-top: 40px;
-  text-align: left;
-  max-width: 900px;
+  justify-content: space-between;
+  flex: 1 1 50%;
+  flex-wrap: wrap;
+  gap: 20px;
+  max-width: 600px;
 }
 
-.info div {
-  width: 30%;
+.card {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  padding: 20px;
+  width: 180px;
+  backdrop-filter: blur(10px);
+  transition: transform 0.3s, box-shadow 0.3s;
 }
 
-h3 {
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 15px rgba(208, 140, 255, 0.4);
+}
+
+.card h2 {
+  color: #d08cff;
   margin-bottom: 10px;
-  color: #c19cf2;
+  font-size: 1.2rem;
+}
+
+.card p, .card li {
+  color: #ddd;
+  font-size: 0.9rem;
+  line-height: 1.4;
+}
+
+.email {
+  color: #9f63f9;
+  text-decoration: none;
+}
+.email:hover {
+  text-decoration: underline;
 }
 
 /* Footer */
 footer {
-  position: absolute;
-  bottom: 10px;
-  font-size: 0.9rem;
   color: #aaa;
+  font-size: 0.9rem;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+/* Fade-in animations */
+.fade-in {
+  opacity: 0;
+  animation: fadeIn 1.5s ease forwards;
+}
+.fade-in-delay {
+  opacity: 0;
+  animation: fadeIn 2s ease 0.5s forwards;
+}
+.fade-in-delay2 {
+  opacity: 0;
+  animation: fadeIn 2s ease 1s forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .content {
+    flex-direction: column;
+    gap: 30px;
+  }
+  .info {
+    justify-content: center;
+  }
 }
