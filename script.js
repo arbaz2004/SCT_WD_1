@@ -1,4 +1,4 @@
-// Animated star background
+// Star background animation
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
 
@@ -14,7 +14,7 @@ function resizeCanvas() {
       x: Math.random() * canvas.width,
       y: Math.random() * canvas.height,
       radius: Math.random() * 1.5,
-      speed: 0.1 + Math.random() * 0.2
+      speed: 0.05 + Math.random() * 0.2
     });
   }
 }
