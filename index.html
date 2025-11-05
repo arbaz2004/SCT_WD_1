@@ -1,55 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SkillCraft AI</title>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <div class="stars-bg"></div>
+  <canvas id="stars"></canvas>
 
-  <header>
-    <h2>SkillCraftAI</h2>
+  <header class="fade-in">
+    <div class="logo">SkillCraft<span>AI</span></div>
     <nav>
-      <a href="#home">Home</a>
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#contact">Contact</a>
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
     </nav>
   </header>
 
-  <main>
-    <section class="hero">
-      <h1>Empowering<br><span>Innovation with AI</span></h1>
-      <p>Transforming ideas into intelligent digital realities.</p>
-      <a href="#about" class="btn">Explore Now</a>
+  <main class="content">
+    <section class="intro fade-in">
+      <h1>Empowering <span>Innovation</span><br>with <span>Artificial Intelligence</span></h1>
+      <p>Transforming ideas into intelligent digital realities with cutting-edge AI and technology.</p>
+      <a href="#" class="btn">Explore Now</a>
     </section>
 
-    <section class="info">
-      <div class="about">
-        <h3>About Us</h3>
-        <p>
-          At <b>SkillCraft Technology</b>, we combine design, intelligence, and data to create
-          solutions that redefine how technology empowers people and businesses.
-        </p>
+    <section class="info fade-in-delay">
+      <div class="card">
+        <h2>About Us</h2>
+        <p>At <b>SkillCraft Technology</b>, we blend creativity, intelligence, and data to craft solutions that redefine innovation in the digital era.</p>
       </div>
-      <div class="services">
-        <h3>Our Services</h3>
-        <p><b>AI Development:</b> Building intelligent, data-driven applications with ML and NLP.</p>
-        <p><b>Smart Web Systems:</b> Integrating real-time automation and adaptive UX powered by AI models.</p>
-        <p><b>Product Innovation:</b> From concept to deployment — bringing futuristic digital ideas to life.</p>
+
+      <div class="card">
+        <h2>Our Services</h2>
+        <ul>
+          <li><b>AI Development:</b> Smart, data-driven apps powered by ML and NLP.</li>
+          <li><b>Smart Systems:</b> Intelligent automation and adaptive UX design.</li>
+          <li><b>Innovation:</b> From concept to deployment — futuristic solutions.</li>
+        </ul>
       </div>
-      <div class="contact">
-        <h3>Let's Collaborate</h3>
-        <p>Reach out and let’s build the next big thing together!</p>
-        <a href="mailto:contact@skillcraft.ai">contact@skillcraft.ai</a>
+
+      <div class="card">
+        <h2>Collaborate</h2>
+        <p>Let’s build the next big thing together!</p>
+        <a href="mailto:contact@skillcraft.ai" class="email">contact@skillcraft.ai</a>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="fade-in-delay2">
     © 2025 SkillCraft Technology | All rights reserved.
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
