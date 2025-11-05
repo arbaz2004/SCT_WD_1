@@ -1,36 +1,41 @@
-// Star background animation
+// Starry animated background
 const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
-
 let stars = [];
-let numStars = 120;
+const numStars = 150;
 
 function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  stars = [];
-  for (let i = 0; i < numStars; i++) {
-    stars.push({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      radius: Math.random() * 1.5,
-      speed: 0.05 + Math.random() * 0.2
-    });
-  }
+  stars = Array.from({ length: numStars }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    r: Math.random() * 1.5,
+    s: 0.1 + Math.random() * 0.2,
+  }));
 }
 window.addEventListener("resize", resizeCanvas);
 resizeCanvas();
 
-function animate() {
+function animateStars() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
   ctx.fillStyle = "white";
   stars.forEach(star => {
     ctx.beginPath();
-    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+    ctx.arc(star.x, star.y, star.r, 0, Math.PI * 2);
     ctx.fill();
-    star.y += star.speed;
+    star.y += star.s;
     if (star.y > canvas.height) star.y = 0;
   });
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animateStars);
 }
-animate();
+animateStars();
+
+// Scroll-triggered fade-up animations
+const fadeEls = document.querySelectorAll(".fade-up");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add("show");
+  });
+}, { threshold: 0.2 });
+fadeEls.forEach(el => observer.observe(el));
