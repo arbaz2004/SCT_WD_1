@@ -1,64 +1,36 @@
-// Floating particle animation
-const canvas = document.getElementById("background");
+// Animated star background
+const canvas = document.getElementById("stars");
 const ctx = canvas.getContext("2d");
-let particlesArray;
 
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+let stars = [];
+let numStars = 120;
 
-window.addEventListener("resize", () => {
+function resizeCanvas() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
-  init();
-});
-
-class Particle {
-  constructor(x, y, size, color, speedX, speedY) {
-    this.x = x;
-    this.y = y;
-    this.size = size;
-    this.color = color;
-    this.speedX = speedX;
-    this.speedY = speedY;
-  }
-  update() {
-    this.x += this.speedX;
-    this.y += this.speedY;
-
-    if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
-    if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
-  }
-  draw() {
-    ctx.beginPath();
-    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-    ctx.shadowBlur = 15;
-    ctx.shadowColor = this.color;
-    ctx.fillStyle = this.color;
-    ctx.fill();
+  stars = [];
+  for (let i = 0; i < numStars; i++) {
+    stars.push({
+      x: Math.random() * canvas.width,
+      y: Math.random() * canvas.height,
+      radius: Math.random() * 1.5,
+      speed: 0.1 + Math.random() * 0.2
+    });
   }
 }
-
-function init() {
-  particlesArray = [];
-  for (let i = 0; i < 60; i++) {
-    const size = Math.random() * 3 + 1;
-    const x = Math.random() * canvas.width;
-    const y = Math.random() * canvas.height;
-    const speedX = (Math.random() - 0.5) * 1.2;
-    const speedY = (Math.random() - 0.5) * 1.2;
-    const color = `hsl(${Math.random() * 360}, 100%, 70%)`;
-    particlesArray.push(new Particle(x, y, size, color, speedX, speedY));
-  }
-}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
 
 function animate() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-  particlesArray.forEach(p => {
-    p.update();
-    p.draw();
+  ctx.fillStyle = "white";
+  stars.forEach(star => {
+    ctx.beginPath();
+    ctx.arc(star.x, star.y, star.radius, 0, Math.PI * 2);
+    ctx.fill();
+    star.y += star.speed;
+    if (star.y > canvas.height) star.y = 0;
   });
   requestAnimationFrame(animate);
 }
-
-init();
 animate();
